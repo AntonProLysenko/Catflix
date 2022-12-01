@@ -15,59 +15,7 @@ const router = express.Router()
 ////////////////////////////////////////////
 // Routes
 ////////////////////////////////////////////
-//Seeding our DB
-router.get("/seed",(req,res)=>{
-    const startMovies =[
-        {
-            title:"Matrix",
-            releaseDate:"1999",
-            length:136,
-            genre:"SciFi",
-            poster:"https://m.media-amazon.com/images/I/51JSM0+hDmL._AC_UF894,1000_QL80_.jpg",
-            director:"Sisters Wachowski",
-            rating:"R",
-            watchAgain:true,
-            cast:[	
-                "Keanu Reeves Neo",
-                "Laurence Fishburne Morpheus",
-                "Carrie-Anne Moss Trinity"
-            ]
 
-        },
-        {
-            title: "50 First Dates",
-            releaseDate: "2004",
-            length: 99,
-            genre: "Comedy",
-            poster: "https://m.media-amazon.com/images/M/MV5BMjAwMzc4MDgxNF5BMl5BanBnXkFtZTYwNjUwMzE3._V1_FMjpg_UX1000_.jpg",
-            director: "Peter Segal",
-            rating: "PG-13",
-            watchAgain: true,
-            cast: ["Adam Sandler", "Drew Barrymore", "Rob Schneider"]
-          },
-          {
-            title: "The Dark Knight",
-            releaseDate: "2008",
-            length: 152,
-            genre: "Action/Superhero",
-            poster: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
-            director: "Christopher Nolan",
-            rating: "PG-13",
-            watchAgain: true,
-            cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"]
-          }
-        
-    ]
-
-    // Delete all movies in the database
-    Movie.deleteMany({}).then((data) => {//PROMICE, (if deleting goes to creating)
-        // Seed Starter Movies
-    Movie.create(startMovies).then((data) => {
-          // send created fruits as response to confirm creation
-    res.json(data);
-    })
-})
-})
 //=====
 //INDEX 
 //=====
