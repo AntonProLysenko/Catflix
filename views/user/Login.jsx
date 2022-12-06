@@ -5,6 +5,7 @@ class Login extends React.Component{
     render(){
         return(
             <DefaultLayout title = "User Login">
+                  Don't have an account? <a href="/user/signup">Create an account</a>
                 <form action="/user/login" method="post">
                     <fieldset>
                         <legend>User Login</legend>

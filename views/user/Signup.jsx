@@ -5,6 +5,7 @@ class Signup extends React.Component{
     render(){
         return(
             <DefaultLayout title ="Create Account" >
+                Already have an account? <a href="/user/login">Log in</a>
                 <form action="/user/signup" method="POST">
                     <fieldset>
                         <legend>New User</legend>

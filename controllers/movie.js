@@ -11,6 +11,17 @@ const Movie = require("../models/movie")
 const router = express.Router()
 
 
+////////////////////////////////////////
+// Router Middleware
+////////////////////////////////////////
+// Authorization Middleware
+router.use((req, res, next) => {
+  if (req.session.loggedIn) {
+    next();
+  } else {
+    res.redirect("/user/login");
+  }
+});
 
 ////////////////////////////////////////////
 // Routes
@@ -81,19 +92,6 @@ router.delete("/:id", (req, res) => {
 
 
 
-router.post("/", async (req, res) => {
-    try {
-      req.body.watchAgain = req.body.watchAgain === "on" ? true : false;
-      req.body.cast = req.body.cast.split(",")
-      console.log(req.body)
-      const createdMovie = await Movie.create(req.body)
-      res.redirect("/movies")
-    } catch (error) {
-      console.log(error);
-      res.json({ error });
-    }
-  })
-
 //=====
 //UPDATE
 //=====
@@ -111,7 +109,21 @@ router.put("/:id", async (req, res) => {
     }
   })
   
-
+/////////
+//CREATE
+////////
+router.post("/", async (req, res) => {
+  try {
+    req.body.watchAgain = req.body.watchAgain === "on" ? true : false;
+    req.body.cast = req.body.cast.split(",")
+    console.log(req.body)
+    const createdMovie = await Movie.create(req.body)
+    res.redirect("/movies")
+  } catch (error) {
+    console.log(error);
+    res.json({ error });
+  }
+})
 
 
 

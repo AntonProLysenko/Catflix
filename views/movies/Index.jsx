@@ -5,6 +5,9 @@ class Index extends React.Component{
     render(){
         return(
             <DefaulLayout>
+                <a href="/user/logout"><button>Logout</button></a>
+                <br />
+                {/* <a href="https://ps-rtt-sei.herokuapp.com/mod-2/week-9/day-3/slides/">Lesson how I compleated it</a> */}
                 <div>
                     <a href="/movies/new">Create New Movie</a>
                     {
