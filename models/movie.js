@@ -19,7 +19,8 @@ const movieSchema = new Schema({
   raiting:String,
   watchAgain:Boolean,
   cast:[{type:String}],
-  rating:String
+  rating:String,
+  username:String//needed for showing movies created for by specific user
 });
 // make fruit model
 const Movie = model("Movie", movieSchema);

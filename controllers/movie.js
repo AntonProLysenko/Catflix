@@ -55,7 +55,7 @@ router.use((req, res, next) => {
 //Async AWAIT
 router.get("/", async (req, res) => {
     try {
-      const movies = await Movie.find({});
+      const movies = await Movie.find({username: req.session.username});//in preanticies we need that to render only movies created by username
       res.render("movies/Index", { movies });
     } catch (err) {
       res.json({ err });
@@ -116,6 +116,7 @@ router.post("/", async (req, res) => {
   try {
     req.body.watchAgain = req.body.watchAgain === "on" ? true : false;
     req.body.cast = req.body.cast.split(",")
+    req.body.username = req.session.username//it tracks who added different movies
     console.log(req.body)
     const createdMovie = await Movie.create(req.body)
     res.redirect("/movies")
